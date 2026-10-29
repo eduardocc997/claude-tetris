@@ -56,7 +56,17 @@ jobs:
                  - **Expected behavior** (for bugs): what should happen
                  - **Suggested labels**: the labels you applied and why
                - A closing note thanking the contributor
+            3. **Write the comment in GitHub-Flavored Markdown** so GitHub renders it correctly:
+               - Use `##`/`###` headings for sections (e.g. `## 📋 Formatted Report`)
+               - Use `-` bullet lists and `1.` numbered lists (steps to reproduce), `**bold**` for field names
+               - Use inline code or fenced code blocks for code, file names, and error messages
+               - Use real line breaks between lines and a blank line between sections, never literal `\n`
+               - Pass the body in single quotes so backticks and `$` are not interpreted by the shell;
+                 write any single quote inside the body as `'\''`
             Use the `gh` CLI to apply labels and post the comment. Example commands:
               gh issue edit ${{ github.event.issue.number }} --add-label "bug" --repo ${{ github.repository }}
-              gh issue comment ${{ github.event.issue.number }} --body "..." --repo ${{ github.repository }}
+              gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} --body '## 📋 Formatted Report
+
+              - **Type**: Bug
+              ...'
             Be concise, helpful, and friendly. Do not over-engineer the response.
